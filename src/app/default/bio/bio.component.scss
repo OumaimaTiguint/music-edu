@@ -1,0 +1,25 @@
+@import '../../../styles.scss';
+
+.bio {
+    display: grid;
+    grid-template-areas: 
+        "txt img"
+        "txt quote";
+    grid-template-columns: 2fr 1fr;
+}
+p { 
+    grid-area: txt;
+    width: 80%
+}
+h2 { 
+    grid-area: quote;
+    text-align: end;
+    span {
+        font-size: 20px;
+    }
+}
+img { 
+    grid-area: img;
+    width: 400px;
+    border-radius: 50%;
+}
