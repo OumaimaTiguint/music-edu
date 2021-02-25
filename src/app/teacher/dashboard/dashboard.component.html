@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Lessons</h1>
+    <button class='btn'>Add a new lesson</button>
+    <div class="lessons">
+        <div 
+            class="lesson" 
+            *ngFor="let lesson of (lessons | async)" 
+            [routerLink]="['/teacher/lessons', lesson._id]">
+            <h3>{{lesson.title}}</h3>
+            <p>{{lesson.content}}</p>
+        </div>
+    </div>
+</div>

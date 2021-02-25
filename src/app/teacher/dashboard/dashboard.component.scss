@@ -1,0 +1,51 @@
+@import '../../../styles.scss';
+
+.btn {
+    background: #F2A154;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: $main-font;
+    margin: 10px;
+    float: right;
+}
+.lessons {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: 0 auto
+}
+.lesson {
+    background-color: $secondary-color;
+    height: 150px;
+    border-radius: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    p {
+        display: block;
+        width: 400px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        opacity: 0.7;
+        font-size: 16px;
+        font-family: "Inter", sans-serif;
+        line-height: 150px;
+        margin-left: 30px
+    }
+    h3 {
+        font-weight: bold;
+        font-family: $main-font;
+        color: #fff;
+        font-size: 24px;
+        text-align: center;
+        background-color: #F2BC71;
+        height: 150px;
+        width: 150px;
+        line-height: 150px;
+        border-radius: 10px;
+    }
+}

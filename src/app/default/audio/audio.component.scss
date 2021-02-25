@@ -1,0 +1,8 @@
+.videos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+iframe { 
+    margin: 20px;
+}

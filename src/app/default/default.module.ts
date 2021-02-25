@@ -7,15 +7,15 @@ import { BioComponent } from './bio/bio.component';
 import { ContactComponent } from './contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContactService } from '../services/contact.service';
-
-
+import { AudioComponent } from './audio/audio.component';
 
 @NgModule({
   declarations: [
     HomeComponent, 
     NavbarComponent, 
     BioComponent, 
-    ContactComponent
+    ContactComponent, 
+    AudioComponent
   ],
   providers: [
     ContactService

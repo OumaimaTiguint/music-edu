@@ -1,0 +1,19 @@
+@import '../../../styles.scss';
+
+nav { 
+    background-color: $main-color;
+}
+
+.navbar-brand {
+    background-color: $secondary-color;
+    border-radius: 50%;
+    height: 40px
+}
+
+li a, li p {
+    text-decoration: none;
+    color: $secondary-color;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 30px
+}
