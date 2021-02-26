@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Registered Students</h1>
+    <div class="students">
+        <div class="student" *ngFor="let student of (students | async)">
+            <img src="assets/user.svg" alt="user icon">
+            <h2>{{student.fullname | uppercase}}</h2>
+            <p>{{student.email}}</p>
+        </div>
+    </div>
+</div>

@@ -10,10 +10,12 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const title = req.body.title;
     const content = req.body.content;
+    const level = req.body.level;
     const exercises = req.body.exercises;
     const newLesson = new Lesson({
         title,
         content,
+        level,
         exercises
     });
 
@@ -39,6 +41,7 @@ router.route('/update/:id').post((req, res) => {
         .then(l => {
             l.title = req.body.title;
             l.content = req.body.content;
+            l.level = req.body.level;
             l.exercises = req.body.exercises;
 
             l.save()

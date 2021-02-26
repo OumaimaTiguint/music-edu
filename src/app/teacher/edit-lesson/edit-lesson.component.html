@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <h1>Add New Lesson</h1>
+    <h1>Edit Lesson</h1>
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
@@ -42,7 +42,7 @@
                         type="submit" 
                         class="btn" 
                         [disabled]="!FormData.valid">
-                        Add Lesson
+                        Edit Lesson
                     </button>
                 </div>
             </form>

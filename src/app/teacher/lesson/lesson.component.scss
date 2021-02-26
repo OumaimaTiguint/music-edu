@@ -1,0 +1,32 @@
+@import '../../../styles.scss';
+
+.level {
+    text-align: center;
+    font-family: $main-font;
+    font-size: 20px;
+    font-weight: bold;
+    color: #F2A154;
+}
+
+.lesson-content {
+    width: 80%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    .btns {
+        margin: 10px;
+        .btn { 
+            display: block;
+            margin-bottom: 30px;
+            width: 150px;
+            font-weight: bold;
+            font-family: $main-font;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        .ex {
+            color: #fff;
+            background-color: #F2A154;
+        }
+    }
+}

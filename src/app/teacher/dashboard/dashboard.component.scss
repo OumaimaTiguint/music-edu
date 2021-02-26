@@ -5,10 +5,42 @@
     border-radius: 10px;
     color: #fff;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
     font-family: $main-font;
     margin: 10px;
     float: right;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);;
+}
+.level {
+    width: 70%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "ul btn";
+    border-bottom: 1px solid #DBDBDB;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        display: inline;
+    }
+    a {
+        display: inline-block;
+        padding: 6px;
+        color: #9A9CB5;
+        text-align: center;
+        letter-spacing: 0.02em;
+        font-weight: 600;
+        font-size: 18px;
+        font-family: "Inter", sans-serif
+    }
+    a:hover, a:active, .active {
+        color: $main-color;
+        border-bottom: 2px solid $main-color;
+        text-decoration: none;
+    }
 }
 .lessons {
     display: flex;
@@ -24,6 +56,7 @@
     margin: 20px;
     display: flex;
     flex-direction: row;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     p {
         display: block;
         width: 400px;
@@ -45,7 +78,7 @@
         background-color: #F2BC71;
         height: 150px;
         width: 150px;
-        line-height: 150px;
         border-radius: 10px;
+        padding: 50px 5px 5px 5px
     }
 }

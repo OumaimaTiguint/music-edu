@@ -16,8 +16,15 @@ const lessonSchema = new Schema({
         trim: true,
         minLength: 2
     },
+    level: {
+        type: String,
+        required: true,
+        unique: false,
+        trim: true,
+        minLength: 2
+    },
     exercises: {
-        type: Array,
+        type: String,
         required: false,
         unique: false,
         trim: true,

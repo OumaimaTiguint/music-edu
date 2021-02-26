@@ -8,10 +8,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { RouterModule } from '@angular/router';
+import { EditLessonComponent } from './edit-lesson/edit-lesson.component';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, DashboardComponent, NavbarComponent, AddLessonComponent, LessonComponent],
+  declarations: [LoginComponent, DashboardComponent, NavbarComponent, AddLessonComponent, LessonComponent, EditLessonComponent, UsersComponent],
   imports: [
     CommonModule,
     TeacherRoutingModule,

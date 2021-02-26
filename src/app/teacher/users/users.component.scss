@@ -1,0 +1,32 @@
+@import '../../../styles.scss';
+
+.students {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-start;
+    width: 70%;
+    margin: 40px auto;
+}
+
+.student {
+    display: grid;
+    grid-template-areas: 
+        "img name"
+        "img email";
+    grid-template-columns: 1fr 3fr;
+    background-color: $secondary-color;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    img {
+        grid-area: img;
+        width: 80px
+    }
+    p {
+        grid-area: email;
+    }
+    h2 {
+        grid-area: name;
+    }
+}

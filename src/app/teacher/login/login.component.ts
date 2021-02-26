@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   onSubmit(FormData) {
     console.log(FormData)
     if(FormData.Email === this.email && FormData.Password === this.password) {
-      this.router.navigate(['/teacher/dashboard']);
+      this.router.navigate(['/t/dashboard']);
     } else {
       console.log("not matching");
       alert("Email or Password are incorrect!")
