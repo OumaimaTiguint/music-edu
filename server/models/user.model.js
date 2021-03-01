@@ -9,13 +9,6 @@ const userSchema = new Schema({
         trim: true,
         minLength: 2
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        minLength: 5
-    },
     password: {
         type: String,
         required: true,
@@ -23,13 +16,6 @@ const userSchema = new Schema({
         trim: true,
         minLength: 6
     },
-    cpassword: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        minLength: 6
-    }
 },
 {
     timestamps: true

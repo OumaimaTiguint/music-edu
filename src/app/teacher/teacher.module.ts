@@ -13,7 +13,15 @@ import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, DashboardComponent, NavbarComponent, AddLessonComponent, LessonComponent, EditLessonComponent, UsersComponent],
+  declarations: [
+    LoginComponent, 
+    DashboardComponent, 
+    NavbarComponent, 
+    AddLessonComponent, 
+    LessonComponent, 
+    EditLessonComponent, 
+    UsersComponent
+  ],
   imports: [
     CommonModule,
     TeacherRoutingModule,

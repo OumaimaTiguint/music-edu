@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Lessons</h1>
+    <div class="level">
+        <ul>
+            <li>
+                <a 
+                    (click)="getBeginnerLessons()" 
+                    [ngClass]="b ? 'active' : null">
+                    Beginner
+                </a>
+            </li>
+            <li>
+                <a 
+                    (click)="getAdvancedLessons()"
+                    [ngClass]="a ? 'active' : null">
+                    Advanced
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="lessons">
+        <div 
+            class="lesson" 
+            *ngFor="let lesson of displayedLessons" 
+            [routerLink]="['/s/l/', lesson._id]">
+            <h3>{{lesson.title}}</h3>
+            <p>{{lesson.content}}</p>
+        </div>
+    </div>
+</div>

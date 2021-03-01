@@ -1,5 +1,9 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs')
+
+const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
 router.route('/').get((req, res) => {
     User.find()
@@ -8,20 +12,35 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const fullname = req.body.fullname;
-    const email = req.body.email;
-    const password = req.body.password;
-    const cpassword = req.body.cpassword;
-    const newUser = new User({
-        fullname,
-        email,
-        password,
-        cpassword
-    });
+    const { fullname, password: plainTextPassword } = req.body;
+    if (!fullname || typeof fullname !== 'string') {
+		return res.json({ status: 'error', error: 'Invalid name' })
+	}
+    if (!plainTextPassword || typeof plainTextPassword !== 'string') {
+		return res.json({ status: 'error', error: 'Invalid password' })
+	}
+    if (plainTextPassword.length < 5) {
+		return res.json({
+			status: 'Error',
+			error: 'Password is too small. It should be atleast 6 characters'
+		})
+	}
+    const password = bcrypt.hash(plainTextPassword, 10)
+    try {
+		const response = User.create({
+			fullname,
+			password
+		})
+		console.log('User created successfully: ', response)
+	} catch (error) {
+		if (error.code === 11000) {
+			// duplicate key
+			return res.json({ status: 'error', error: 'User already exists' })
+		}
+		throw error
+	}
 
-    newUser.save()
-        .then(()=> res.json('User added!'))
-        .catch((err)=> res.status(400).json('Error: ' + err))
+	res.json({ status: 'ok' })
 })
 
 router.route('/update/:id').post((req, res) => {
@@ -38,5 +57,27 @@ router.route('/update/:id').post((req, res) => {
         })
         .catch(err=> res.status(400).json('Error: ' + err))
 });
+
+router.route('/login').post((req, res) => {
+	const { email, password } = req.body;
+	const user = User.findOne({ email }).lean()
+
+	if (!user) {
+		return res.json({ status: 'error', error: 'Invalid username/password' })
+	}
+
+	if (bcrypt.compare(password, user.password)) {
+		// the username, password combination is successful
+        const token = jwt.sign(
+			{
+				id: user._id,
+				email: user.email
+			},
+			JWT_SECRET
+		)
+        return res.json({ status: 'ok', data: token })
+	}
+    res.json({ status: 'error', error: 'Invalid username/password' })
+})
 
 module.exports = router;
