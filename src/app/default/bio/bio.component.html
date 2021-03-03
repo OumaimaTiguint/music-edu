@@ -1,37 +1,27 @@
 <app-navbar></app-navbar>
 <div class="container">
     <h1>Bio</h1>
+    <div class="lang">
+        <ul>
+            <li>
+                <a 
+                    (click)="getEnglishBio()" 
+                    [ngClass]="english ? 'active' : null">
+                    English
+                </a>
+            </li>
+            <li>
+                <a 
+                    (click)="getItalianBio()"
+                    [ngClass]="italian ? 'active' : null">
+                    Italian
+                </a>
+            </li>
+        </ul>
+    </div>
     <div class="bio">
-        <p>
-            Duis eget risus eget lectus maximus accumsan. Morbi scelerisque laoreet metus in semper. Nunc dui justo, 
-            consectetur eu laoreet id, rhoncus a ipsum. Proin dignissim ullamcorper ornare. Proin metus massa, dignissim ac maximus 
-            non, ultrices vel dui. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam ut lobortis lacus, at volutpat magna. 
-            Cras ornare elementum pretium. Nulla varius eros dolor, at euismod velit porta sit amet. Vestibulum laoreet euismod leo 
-            in volutpat. Vestibulum quis ligula condimentum, auctor dui feugiat, sodales tellus. Suspendisse in consectetur libero. 
-            Curabitur at lorem libero. Integer tincidunt sem odio, non fringilla lectus rutrum sed.
-        
-            Suspendisse sit amet risus dignissim, tincidunt lacus sed, ultricies justo. Sed vestibulum lobortis molestie. Aliquam et 
-            finibus lorem. Nulla luctus tincidunt ipsum eu condimentum. Pellentesque ut magna vel diam cursus egestas. Duis
-            ullamcorper turpis a fringilla maximus. Sed et fringilla tortor, ac rhoncus ex. Cras tempus scelerisque ultricies. Maecenas 
-            maximus tincidunt nulla, quis volutpat justo sagittis a.
-        
-            Suspendisse commodo placerat velit non ultrices. Maecenas turpis nibh, fringilla ut purus ut, pharetra cursus mi. Nullam 
-            pretium nisi non laoreet mollis. Praesent varius eros et imperdiet tristique. Aliquam dapibus semper tristique. Morbi quis 
-            urna ut justo dignissim mattis id id eros. Nam nisi erat, imperdiet ac egestas sit amet, cursus id nulla. Cras nunc metus, 
-            faucibus dapibus iaculis sed, congue eu ante. Suspendisse placerat lorem eget nunc cursus rutrum. Aliquam et orci risus. 
-            Vestibulum dignissim elit vel bibendum sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada 
-            fames ac turpis egestas. Etiam fringilla diam non arcu eleifend placerat. Suspendisse in leo ac ipsum iaculis rhoncus ultrices 
-            sed nisl.
-        
-            Suspendisse commodo placerat velit non ultrices. Maecenas turpis nibh, fringilla ut purus ut, pharetra cursus mi. Nullam 
-            pretium nisi non laoreet mollis. Praesent varius eros et imperdiet tristique. Aliquam dapibus semper tristique. Morbi quis urna 
-            ut justo dignissim mattis id id eros. Nam nisi erat, imperdiet ac egestas sit amet, cursus id nulla. Cras nunc metus, faucibus 
-            dapibus iaculis sed, congue eu ante. Suspendisse placerat lorem eget nunc cursus rutrum. Aliquam et orci risus. Vestibulum 
-            dignissim elit vel bibendum sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames 
-            ac turpis egestas. Etiam fringilla diam non arcu eleifend placerat. Suspendisse in leo ac ipsum iaculis rhoncus ultrices 
-            sed nisl.
-            </p>
-            <img src="assets/photo-placeholder.jpg" alt=''>
-            <h2>"Don't fight old habits, replace them with new ones.”<br/><span>-Arnold Jabobs</span></h2>
+        <p>{{displayedLang}}</p>
+        <img src="assets/photo.jpg" alt=''>
+        <h2>"Don't fight old habits, replace them with new ones.”<br/><span>-Arnold Jabobs</span></h2>
     </div>
 </div>

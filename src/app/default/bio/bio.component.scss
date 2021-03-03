@@ -1,5 +1,33 @@
 @import '../../../styles.scss';
 
+.lang {
+    width: 50%;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #DBDBDB;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        display: inline;
+    }
+    a {
+        display: inline-block;
+        padding: 6px;
+        color: #9A9CB5;
+        text-align: center;
+        letter-spacing: 0.02em;
+        font-weight: 600;
+        font-size: 18px;
+        font-family: "Inter", sans-serif
+    }
+    a:hover, a:active, .active {
+        color: $main-color;
+        border-bottom: 2px solid $main-color;
+        text-decoration: none;
+    }
+}
 .bio {
     display: grid;
     grid-template-areas: 

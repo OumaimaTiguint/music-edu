@@ -1,11 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LessonsService {
-
   constructor(private http: HttpClient) { }
 
   getLessons() {
@@ -16,8 +15,9 @@ export class LessonsService {
     return this.http.get("http://localhost:5000/l/"+ id)
   }
 
-  addLesson(title, content, level, exercises) {
-    return this.http.post("http://localhost:5000/l/add", {title, content, level, exercises})
+  addLesson(title, content, level) {
+    return this.http.post("http://localhost:5000/l/add", 
+      {title, content, level})
   }
 
   deleteLesson(id:string) {
@@ -25,6 +25,6 @@ export class LessonsService {
   }
 
   editLesson(id, title, content, level, exercises) {
-    return this.http.post("http://localhost:5000/l/update/" + id, {title, content, level, exercises})
+    return this.http.post("http://localhost:5000/l/update/" + id, {title, content, level})
   }
 }

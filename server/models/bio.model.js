@@ -1,22 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const lessonSchema = new Schema({
-    title: {
+const bioSchema = new Schema({
+    eng: {
         type: String,
         required: true,
         unique: false,
         trim: true,
         minLength: 2
     },
-    content: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        minLength: 2
-    },
-    level: {
+    ita: {
         type: String,
         required: true,
         unique: false,
@@ -25,9 +18,9 @@ const lessonSchema = new Schema({
     }
 },
 {
-    timestamps: true
+    timestamps: false
 });
 
-const Lesson = mongoose.model('Lesson', lessonSchema);
+const Bio = mongoose.model('Bio', bioSchema);
 
-module.exports = Lesson;
+module.exports = Bio;

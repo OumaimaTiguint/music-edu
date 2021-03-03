@@ -10,6 +10,12 @@
             <a class="btn ex" href={{exercises}} download>
                 Download Exercises
             </a>
+            <object 
+                ng-show="content" 
+                data="{{content}}" 
+                type="application/pdf" 
+                style="width: 100%; height: 400px;">
+            </object>
         </div>
     </div>
     <app-comments></app-comments>

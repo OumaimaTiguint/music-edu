@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 require('dotenv').config();
 
@@ -9,6 +10,8 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
@@ -21,12 +24,17 @@ connection.once('open', () => {
 const lessonRouter = require('./routes/lessons');
 const userRouter = require('./routes/users');
 const teacherRouter = require('./routes/teacher');
-const commentRouter = require('./routes/comments')
+const commentRouter = require('./routes/comments');
+const bioRouter = require('./routes/bio');
+const path = require('path');
 
 app.use('/l', lessonRouter);
 app.use('/t', teacherRouter);
 app.use('/u', userRouter);
-app.use('/c', commentRouter)
+app.use('/c', commentRouter);
+app.use('/b', bioRouter);
+
+app.use('/exercises', express.static(path.join('exercises')));
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)

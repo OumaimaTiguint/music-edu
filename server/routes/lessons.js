@@ -7,16 +7,14 @@ router.get('/', (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
-router.route('/add').post((req, res) => {
+router.post('/add',(req, res) => { 
     const title = req.body.title;
     const content = req.body.content;
     const level = req.body.level;
-    const exercises = req.body.exercises;
     const newLesson = new Lesson({
         title,
         content,
-        level,
-        exercises
+        level
     });
 
     newLesson.save()
@@ -36,13 +34,12 @@ router.route('/delete/:id').delete((req, res) => {
         .catch(err=> res.status(400).json('Error: ' + err))
 });
 
-router.route('/update/:id').post((req, res) => {
+router.post('/update/:id', (req, res) => {
     Lesson.findById(req.params.id)
         .then(l => {
             l.title = req.body.title;
             l.content = req.body.content;
             l.level = req.body.level;
-            l.exercises = req.body.exercises;
 
             l.save()
                 .then(()=> res.json('Lesson updated!'))

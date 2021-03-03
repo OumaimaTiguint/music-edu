@@ -21,7 +21,12 @@ export class EditLessonComponent implements OnInit {
     console.log(FormData)
     const lessonId = this.activatedRoute.snapshot.paramMap.get('id');
     const { Title, Content, Level, Exercise } = FormData;
-    this.lessonsService.editLesson(lessonId, Title, Content, Level, Exercise)
+    const exercise = {
+      data: '/uploads/' + Exercise.slice(12),
+      contentType: "application/pdf"
+  }
+    console.log(Exercise.slice(12))
+    this.lessonsService.editLesson(lessonId, Title, Content, Level, exercise)
     .subscribe(response => {
       console.log(response)
       this.router.navigate(["t/dashboard"])
