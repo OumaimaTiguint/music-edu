@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  data: Observable<any>;
   FormData: FormGroup;
-  email: string;
-  password: string;
   constructor(
     private builder: FormBuilder,
     private teacher: TeacherService,
@@ -22,25 +21,24 @@ export class LoginComponent implements OnInit {
   
   onSubmit(FormData) {
     console.log(FormData)
-    if(FormData.Email === this.email && FormData.Password === this.password) {
-      this.router.navigate(['/t/dashboard']);
-    } else {
-      console.log("not matching");
-      alert("Email or Password are incorrect!")
-      return;
-    }
+    const { Fullname, Password } = FormData;
+    this.teacher.teacherLogin(Fullname, Password)
+    .pipe(first())
+    .subscribe(
+      (data: HttpResponse<any>) => {
+        console.log(data.headers.get('token'));
+        localStorage.setItem('token', data.headers.get('token'));
+        this.router.navigate(["/t/dashboard/"])
+      },error => {
+        console.log(error)
+      }
+    );
   }
 
   ngOnInit(): void {
     this.FormData = this.builder.group({
-      Email: new FormControl('', [Validators.compose([Validators.required, Validators.email])]),
+      Fullname: new FormControl('', [Validators.required]),
       Password: new FormControl('', [Validators.required])
-    })
-    this.data = this.teacher.getTeacher();
-    this.data.subscribe(value => {
-      const { email, password } = value[0];
-      this.email = email;
-      this.password = password;
     })
   }
 

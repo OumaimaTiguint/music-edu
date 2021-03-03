@@ -11,8 +11,7 @@
 .student {
     display: grid;
     grid-template-areas: 
-        "img name"
-        "img email";
+        "img name";
     grid-template-columns: 1fr 3fr;
     background-color: $secondary-color;
     margin: 20px;
@@ -23,10 +22,8 @@
         grid-area: img;
         width: 80px
     }
-    p {
-        grid-area: email;
-    }
     h2 {
         grid-area: name;
+        padding: 5px
     }
 }

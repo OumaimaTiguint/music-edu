@@ -21,10 +21,12 @@ connection.once('open', () => {
 const lessonRouter = require('./routes/lessons');
 const userRouter = require('./routes/users');
 const teacherRouter = require('./routes/teacher');
+const commentRouter = require('./routes/comments')
 
 app.use('/l', lessonRouter);
 app.use('/t', teacherRouter);
-app.use('/u', userRouter)
+app.use('/u', userRouter);
+app.use('/c', commentRouter)
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)

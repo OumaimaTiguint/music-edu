@@ -1,9 +1,7 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs')
-
-const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
+const bcrypt = require('bcryptjs');
 
 router.route('/').get((req, res) => {
     User.find()
@@ -12,44 +10,23 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const { fullname, password: plainTextPassword } = req.body;
-    if (!fullname || typeof fullname !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid name' })
-	}
-    if (!plainTextPassword || typeof plainTextPassword !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid password' })
-	}
-    if (plainTextPassword.length < 5) {
-		return res.json({
-			status: 'Error',
-			error: 'Password is too small. It should be atleast 6 characters'
-		})
-	}
-    const password = bcrypt.hash(plainTextPassword, 10)
-    try {
-		const response = User.create({
-			fullname,
-			password
-		})
-		console.log('User created successfully: ', response)
-	} catch (error) {
-		if (error.code === 11000) {
-			// duplicate key
-			return res.json({ status: 'error', error: 'User already exists' })
-		}
-		throw error
-	}
+    const fullname = req.body.fullname;
+    const password = req.body.password;
+    const newUser = new User({
+        fullname,
+		password
+    });
 
-	res.json({ status: 'ok' })
+    newUser.save()
+        .then(()=> res.json('User added!'))
+        .catch((err)=> res.status(400).json('Error: ' + err))
 })
 
 router.route('/update/:id').post((req, res) => {
     User.findById(req.params.id)
         .then(u => {
             u.fullname = req.body.fullname;
-            u.email = req.body.email;
             u.password = req.body.password;
-            u.cpassword = req.body.cpassword;
 
             u.save()
                 .then(()=> res.json('User updated!'))
@@ -58,26 +35,42 @@ router.route('/update/:id').post((req, res) => {
         .catch(err=> res.status(400).json('Error: ' + err))
 });
 
-router.route('/login').post((req, res) => {
-	const { email, password } = req.body;
-	const user = User.findOne({ email }).lean()
+router.post('/login', async(req, res) => {
+    try {
+        const fullname = req.body.fullname;
+        const password = req.body.password;
+	    const user = await User.findOne({ fullname: fullname }).lean()
 
-	if (!user) {
-		return res.json({ status: 'error', error: 'Invalid username/password' })
-	}
-
-	if (bcrypt.compare(password, user.password)) {
-		// the username, password combination is successful
-        const token = jwt.sign(
-			{
-				id: user._id,
-				email: user.email
-			},
-			JWT_SECRET
-		)
-        return res.json({ status: 'ok', data: token })
-	}
-    res.json({ status: 'error', error: 'Invalid username/password' })
+	    if (!user) {
+		    res.json({ status: 'error', error: 'Invalid name/password' })
+            return;
+	    }
+	    if (bcrypt.compare(password, user.password)) { 
+            // Create token
+            const token = jwt.sign(
+                { 
+                    _id: user._id,
+                    fullname: user.fullname
+                }, 
+                process.env.TOKEN_SECRET
+            )
+            res.header('token', token)
+            res.header("Access-Control-Expose-Headers", "token")
+            return res.json({ status: 'ok', data: token })
+        } else {
+            res.json({ status: 'error', error: 'Invalid username/password' })
+        }
+    }
+    catch(e) {
+        console.log(e)
+    }
+	
 })
+
+router.route('/:id').get((req, res) => {
+    User.findById(req.params.id)
+        .then(qst => res.json(qst))
+        .catch(err=> res.status(400).json('Error: ' + err))
+});
 
 module.exports = router;

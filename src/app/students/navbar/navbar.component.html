@@ -5,10 +5,21 @@
         </a>
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/s/dashboard">Dashboard</a>
+                <a class="nav-link" [routerLink]="['/s/dashboard']">Dashboard</a>
             </li>
-            <li class="nav-item">
-                <p class="nav-link">Name</p>
+            <li class="nav-item dropdown">
+                <a 
+                    class="nav-link dropdown-toggle" 
+                    href="#" id="navbarDropdown" 
+                    role="button" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false">
+                    {{name | titlecase}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
             </li>
         </ul>
     </div>

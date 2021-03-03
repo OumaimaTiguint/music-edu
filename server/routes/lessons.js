@@ -1,7 +1,7 @@
 const router = require('express').Router();
 let Lesson = require('../models/lesson.model');
 
-router.route('/').get((req, res) => {
+router.get('/', (req, res) => {
     Lesson.find()
         .then(l => res.json(l))
         .catch(err => res.status(400).json('Error: ' + err))
@@ -24,7 +24,7 @@ router.route('/add').post((req, res) => {
         .catch((err)=> res.status(400).json('Error: ' + err))
 })
 
-router.route('/:id').get((req, res) => {
+router.get('/:id', (req, res) => {
     Lesson.findById(req.params.id)
         .then(qst => res.json(qst))
         .catch(err=> res.status(400).json('Error: ' + err))

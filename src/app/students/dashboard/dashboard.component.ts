@@ -1,5 +1,8 @@
+import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/internal/operators/map';
 import { LessonsService } from 'src/app/services/lessons.service';
 
 @Component({
@@ -15,7 +18,12 @@ export class DashboardComponent implements OnInit {
   b: boolean = true;
   a: boolean = false;
 
-  constructor( private lessonService: LessonsService ) { }
+  constructor( 
+    private lessonService: LessonsService,
+    private router: Router,
+    public activatedRoute: ActivatedRoute,
+    private usersService: UsersService
+  ) { }
 
   getBeginnerLessons() {
     console.log(this.beginner)

@@ -6,14 +6,35 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
 import { EditLessonComponent } from './edit-lesson/edit-lesson.component';
+import { AuthGuardService as AuthGuard } from '../services/auth-guard.service';
 
 const routes: Routes = [
   { path: "", component: LoginComponent},
-  { path: "dashboard", component: DashboardComponent},
-  { path: "l/add", component: AddLessonComponent},
-  { path: "l/:id", component: LessonComponent},
-  { path: "l/edit/:id", component: EditLessonComponent},
-  { path: "students", component: UsersComponent}
+  { 
+    path: "dashboard",
+    component: DashboardComponent,
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: "l/add", 
+    component: AddLessonComponent,
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: "l/:id", 
+    component: LessonComponent,
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: "l/edit/:id", 
+    component: EditLessonComponent,
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: "students", 
+    component: UsersComponent,
+    canActivate: [AuthGuard] 
+  }
 ];
 
 @NgModule({

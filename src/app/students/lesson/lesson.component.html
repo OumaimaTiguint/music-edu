@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <h1>{{title}}</h1>
+    <h1>{{title | titlecase}}</h1>
     <p class="level">{{level}}</p>
     <div class="lesson-content">
         <p>{{content}}</p>
@@ -10,4 +10,5 @@
             </a>
         </div>
     </div>
+    <app-comments></app-comments>
 </div>

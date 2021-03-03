@@ -13,7 +13,8 @@ const routes: Routes = [
   {
     path: 's',
     loadChildren: () => import('./students/students.module').then(m => m.StudentsModule)
-  }
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

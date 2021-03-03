@@ -1,18 +1,26 @@
+import { AuthGuardService } from './../services/auth-guard.service';
 import { RegisterComponent } from './register/register.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LessonComponent } from './lesson/lesson.component';
+import { AuthGuardService as AuthGuard } from '../services/auth-guard.service';
+
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { 
     path: "dashboard", 
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard] 
   },
-  { path: "l/:id", component: LessonComponent },
+  { 
+    path: "l/:id", 
+    component: LessonComponent,
+    canActivate: [AuthGuard] 
+  },
 ];
 
 @NgModule({

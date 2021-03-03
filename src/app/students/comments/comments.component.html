@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="add-comment">
+        <input 
+            type="text" 
+            name="Comment" 
+            placeholder="Add a comment..." 
+            [(ngModel)]="comment"
+        >
+        <button  type="submit" (click)="onSubmit()">Add Comment</button>
+    </div>
+    <hr>
+    <div class="comment" *ngFor="let comment of commentsById">
+        <p><strong>{{comment.user | titlecase}}</strong></p>
+        <p>{{comment.comment}}</p>
+    </div>
+</div>

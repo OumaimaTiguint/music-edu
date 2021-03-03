@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
     this.usersService.addUser(Fullname, Password)
     .subscribe(response => {
       console.log(response)
-      //this.router.navigate(["/s/dashboard"])
+      this.router.navigate(["/s/login/"])
     }, error => {
       console.log({ error })
     })
