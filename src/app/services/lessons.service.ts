@@ -24,7 +24,7 @@ export class LessonsService {
     return this.http.delete("http://localhost:5000/l/delete/" + id)
   }
 
-  editLesson(id, title, content, level, exercises) {
+  editLesson(id, title, content, level) {
     return this.http.post("http://localhost:5000/l/update/" + id, {title, content, level})
   }
 }

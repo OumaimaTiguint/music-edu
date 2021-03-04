@@ -2,7 +2,8 @@
 
 .students {
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-content: flex-start;
     width: 70%;
     margin: 40px auto;

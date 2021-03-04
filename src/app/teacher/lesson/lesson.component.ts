@@ -12,7 +12,6 @@ export class LessonComponent implements OnInit {
   loadedLesson: Observable<any>;
   title: string;
   content: string;
-  exercises: string;
   level: string;
   id: string;
   constructor(
@@ -39,16 +38,15 @@ export class LessonComponent implements OnInit {
       this.loadedLesson = this.lessonsService.getLessonById(lessonId)
     });
     this.loadedLesson.subscribe(value => {
-      const { title, content, level, exercises, _id } = value;
+      const { title, content, level, _id } = value;
       this.title = title;
       this.content = content;
       this.level = level;
-      this.exercises = exercises;
       this.id = _id
-      console.log(exercises.data.data)
-      let file = new Blob(exercises.data.data, { type: 'application/pdf' });            
-      const fileURL = URL.createObjectURL(file);
-      window.open(fileURL);
+      //console.log(exercises.data.data)
+      //let file = new Blob(exercises.data.data, { type: 'application/pdf' });            
+      //const fileURL = URL.createObjectURL(file);
+      //window.open(fileURL);
     })
   }
 

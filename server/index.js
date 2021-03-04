@@ -26,6 +26,7 @@ const userRouter = require('./routes/users');
 const teacherRouter = require('./routes/teacher');
 const commentRouter = require('./routes/comments');
 const bioRouter = require('./routes/bio');
+const exercisesRouter = require('./routes/exercises');
 const path = require('path');
 
 app.use('/l', lessonRouter);
@@ -34,7 +35,8 @@ app.use('/u', userRouter);
 app.use('/c', commentRouter);
 app.use('/b', bioRouter);
 
-app.use('/exercises', express.static(path.join('exercises')));
+app.use('/exercises', express.static(path.join('public/uploads')));
+app.use('/api/exercises', exercisesRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)

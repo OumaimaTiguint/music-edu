@@ -1,10 +1,9 @@
+import { ExerciseService } from 'src/app/services/exercise.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LessonsService } from 'src/app/services/lessons.service';
-import { FileSelectDirective, FileUploader} from 'ng2-file-upload';
-import {saveAs} from 'file-saver';
-import { FilesService } from 'src/app/services/files.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -18,10 +17,16 @@ export class LessonComponent implements OnInit {
   content: string;
   level: string;
   id: string;
+
+  lessonId: string;
+  exercises: Observable<any>
+
+  exerciseFile;
   
   constructor(
     private lessonsService: LessonsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private exerciseService: ExerciseService
   ) {
   }
 
@@ -30,8 +35,8 @@ export class LessonComponent implements OnInit {
       if(!paramMap.has('id')) {
         return;
       }
-      const lessonId = paramMap.get('id');
-      this.loadedLesson = this.lessonsService.getLessonById(lessonId)
+      this.lessonId = paramMap.get('id');
+      this.loadedLesson = this.lessonsService.getLessonById(this.lessonId)
     });
     this.loadedLesson.subscribe(value => {
       const { title, content, level, _id } = value;
@@ -40,6 +45,16 @@ export class LessonComponent implements OnInit {
       this.level = level;
       this.id = _id
     })
-  }
 
+    this.exercises = this.exerciseService.getExercises();
+    this.exercises.subscribe(value=> {
+      console.log(value)
+      value.exercises.map(e => {
+        if(e.lessonId === this.lessonId) {
+          this.exerciseFile = e.filePath
+        }
+      })
+      console.log(this.exerciseFile);
+    })
+  }
 }

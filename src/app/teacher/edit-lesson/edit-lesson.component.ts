@@ -20,13 +20,8 @@ export class EditLessonComponent implements OnInit {
   onSubmit(FormData) {
     console.log(FormData)
     const lessonId = this.activatedRoute.snapshot.paramMap.get('id');
-    const { Title, Content, Level, Exercise } = FormData;
-    const exercise = {
-      data: '/uploads/' + Exercise.slice(12),
-      contentType: "application/pdf"
-  }
-    console.log(Exercise.slice(12))
-    this.lessonsService.editLesson(lessonId, Title, Content, Level, exercise)
+    const { Title, Content, Level } = FormData;
+    this.lessonsService.editLesson(lessonId, Title, Content, Level)
     .subscribe(response => {
       console.log(response)
       this.router.navigate(["t/dashboard"])
@@ -40,7 +35,6 @@ export class EditLessonComponent implements OnInit {
       Title: new FormControl('', [Validators.required]),
       Content: new FormControl('', [Validators.required]),
       Level: new FormControl('', [Validators.required]),
-      Exercise: new FormControl('', [Validators.required]),
     })
   }
 

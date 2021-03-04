@@ -1,4 +1,4 @@
-const Exercise = require('../models/exercise');
+const Exercise = require("../models/exercise.model");
 
 exports.getExercises = async (req, res) => {
   const exercises = await Exercise.find();
@@ -6,10 +6,10 @@ exports.getExercises = async (req, res) => {
 };
 
 exports.postExercise = async (req, res) => {
-  const { name } = req.body;
+  const { lessonId } = req.body;
   const filePath = 'http://localhost:5000/exercises/' + req.file.filename;
   const exercise = new Exercise({
-    name,
+    lessonId,
     filePath,
   });
   const createdExercise = await exercise.save();

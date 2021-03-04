@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { EditLessonComponent } from './edit-lesson/edit-lesson.component';
 import { UsersComponent } from './users/users.component';
 import { CommentsComponent } from './comments/comments.component';
+import { AddExercisesComponent } from './add-exercises/add-exercises.component';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { CommentsComponent } from './comments/comments.component';
     AddLessonComponent, 
     LessonComponent, 
     EditLessonComponent, 
-    UsersComponent, CommentsComponent
+    UsersComponent, CommentsComponent, AddExercisesComponent
   ],
   imports: [
     CommonModule,
