@@ -20,13 +20,11 @@ export class LoginComponent implements OnInit {
   ) { }
   
   onSubmit(FormData) {
-    console.log(FormData)
     const { Fullname, Password } = FormData;
     this.teacher.teacherLogin(Fullname, Password)
     .pipe(first())
     .subscribe(
       (data: HttpResponse<any>) => {
-        console.log(data.headers.get('token'));
         localStorage.setItem('token', data.headers.get('token'));
         this.router.navigate(["/t/dashboard/"])
       },error => {

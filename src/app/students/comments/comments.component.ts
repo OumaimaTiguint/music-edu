@@ -26,7 +26,6 @@ export class CommentsComponent implements OnInit {
     const { comment } = this;
     this.commentsService.addComment(this.lessonId, comment, this.user)
     .subscribe(response => {
-      console.log(response)
       window.location.reload();
     }, error => {
       console.log({ error })

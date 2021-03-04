@@ -48,13 +48,11 @@ export class LessonComponent implements OnInit {
 
     this.exercises = this.exerciseService.getExercises();
     this.exercises.subscribe(value=> {
-      console.log(value)
       value.exercises.map(e => {
         if(e.lessonId === this.lessonId) {
           this.exerciseFile = e.filePath
         }
       })
-      console.log(this.exerciseFile);
     })
   }
 }

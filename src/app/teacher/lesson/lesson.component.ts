@@ -43,10 +43,6 @@ export class LessonComponent implements OnInit {
       this.content = content;
       this.level = level;
       this.id = _id
-      //console.log(exercises.data.data)
-      //let file = new Blob(exercises.data.data, { type: 'application/pdf' });            
-      //const fileURL = URL.createObjectURL(file);
-      //window.open(fileURL);
     })
   }
 

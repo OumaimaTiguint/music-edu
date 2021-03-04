@@ -26,14 +26,12 @@ export class DashboardComponent implements OnInit {
   }
 
   getBeginnerLessons() {
-    console.log(this.beginner)
     this.displayedLessons = this.beginner;
     this.b = true;
     this.a = false;
   }
 
   getAdvancedLessons() {
-    console.log(this.advanced)
     this.displayedLessons = this.advanced;
     this.a = true;
     this.b = false;

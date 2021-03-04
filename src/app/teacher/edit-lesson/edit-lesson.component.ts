@@ -18,12 +18,10 @@ export class EditLessonComponent implements OnInit {
   ) { }
 
   onSubmit(FormData) {
-    console.log(FormData)
     const lessonId = this.activatedRoute.snapshot.paramMap.get('id');
     const { Title, Content, Level } = FormData;
     this.lessonsService.editLesson(lessonId, Title, Content, Level)
     .subscribe(response => {
-      console.log(response)
       this.router.navigate(["t/dashboard"])
     }, error => {
       console.log({ error })

@@ -19,10 +19,8 @@ export class AddLessonComponent implements OnInit {
   onSubmit(FormData) {
     console.log(FormData)
     const { Title, Content, Level} = FormData;
-    console.log(Title, Content, Level)
     this.lessonsService.addLesson(Title, Content, Level)
     .subscribe(response => {
-      console.log(response)
       this.router.navigate(["/t/dashboard"])
     }, error => {
       console.log({ error })

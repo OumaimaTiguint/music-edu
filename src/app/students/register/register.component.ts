@@ -18,11 +18,9 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   onSubmit(FormData) {
-    console.log(FormData)
     const { Fullname, Password } = FormData;
     this.usersService.addUser(Fullname, Password)
     .subscribe(response => {
-      console.log(response)
       this.router.navigate(["/s/login/"])
     }, error => {
       console.log({ error })

@@ -18,14 +18,12 @@ export class BioComponent implements OnInit {
   constructor(private bioService: BioService) { }
 
   getEnglishBio() {
-    console.log(this.eng)
     this.displayedLang = this.eng;
     this.english = true;
     this.italian = false;
   }
 
   getItalianBio() {
-    console.log(this.ita)
     this.displayedLang = this.ita;
     this.italian = true;
     this.english = false;
