@@ -1,12 +1,8 @@
 @import '../../../styles.scss';
 
 .level {
-    width: 70%;
+    width: 90%;
     margin: 40px auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: "ul btn";
-    border-bottom: 1px solid #DBDBDB;
     ul {
         list-style-type: none;
         margin: 0;
@@ -70,4 +66,15 @@
         border-radius: 10px;
         padding: 50px 5px 5px 5px
     }
+}
+
+@media screen and (max-width: 800px) {
+    h3 {
+        width: 80px;
+        height: 80px
+    }
+    p {
+        display: none !important
+    }
+    .lesson { width: 90%}
 }

@@ -39,3 +39,9 @@
     }
     hr { border-color: $secondary-color}
 }
+
+@media screen and (max-width: 800px) {
+    .comment { 
+        grid-template-columns: 1fr 2fr !important;
+    }
+}

@@ -6,3 +6,10 @@
 iframe { 
     margin: 20px;
 }
+
+@media screen and (max-width: 800px) {
+    .videos { 
+        display: column;
+        margin: 0 auto
+    }
+}

@@ -28,3 +28,11 @@
         padding: 5px
     }
 }
+
+@media screen and (max-width: 800px) {
+    .students {
+        display:flex;
+        flex-direction: column;
+        width: 100%
+    }
+}

@@ -11,3 +11,9 @@ h1 {
     font-weight: bold;
     text-align: center;
 }
+
+@media screen and (max-width: 800px) {
+    .container {
+        width: 100% !important
+    }
+}

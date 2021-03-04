@@ -17,3 +17,9 @@ input, textarea {
     margin: 10px;
     width: 70%
 }
+
+@media screen and (max-width: 800px) {
+    p { left: 20%}
+    h1{ margin-top: 70px}
+    .btn { width: 80%}
+}

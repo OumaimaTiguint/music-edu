@@ -30,3 +30,19 @@
         }
     }
 }
+
+@media screen and (max-width: 800px) {
+    .lesson-content { 
+        width: 90%;
+        display: block;
+        .btns {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .btn {
+                width: 100px;
+                margin: 5px
+            }
+        }
+    }
+}

@@ -51,3 +51,23 @@ img {
     width: 400px;
     border-radius: 50%;
 }
+
+@media screen and (max-width: 800px) {
+    .lang { width: 90%}
+    .bio { display: block;}
+    img { 
+        width: 300px;
+        margin: 10px
+    }
+    h2 { text-align: center;}
+    p { width: 100% !important}
+}
+
+@media screen and (max-width: 1050px) {
+    h2 { 
+        text-align: center;
+        float: right;
+        width: 50%;
+        margin-top: 40px
+    }
+}

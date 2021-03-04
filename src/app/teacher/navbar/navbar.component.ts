@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     const token = localStorage.getItem('token')
     this.decoded = this.authService.getDecodedAccessToken(token)
-    this.name = this.decoded.fullname
+    this.name = this.decoded.fullname.split(" ")[0];
   }
 
 }
