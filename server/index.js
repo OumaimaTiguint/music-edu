@@ -26,6 +26,7 @@ const userRouter = require('./routes/users');
 const teacherRouter = require('./routes/teacher');
 const commentRouter = require('./routes/comments');
 const bioRouter = require('./routes/bio');
+const notificationRouter = require('./routes/notifications');
 const exercisesRouter = require('./routes/exercises');
 const path = require('path');
 
@@ -34,6 +35,7 @@ app.use('/t', teacherRouter);
 app.use('/u', userRouter);
 app.use('/c', commentRouter);
 app.use('/b', bioRouter);
+app.use('/n', notificationRouter);
 
 app.use('/exercises', express.static(path.join('public/uploads')));
 app.use('/api/exercises', exercisesRouter);

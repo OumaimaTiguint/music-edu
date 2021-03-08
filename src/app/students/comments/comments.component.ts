@@ -1,3 +1,5 @@
+import { LessonsService } from './../../services/lessons.service';
+import { NotificationsService } from './../../services/notifications.service';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommentsService } from '../../services/comments.service';
@@ -13,19 +15,28 @@ export class CommentsComponent implements OnInit {
   allComments: Observable<any>
   decoded;
   lessonId: string;
+  lessonTitle: string;
   user: string;
   comment: string;
   commentsById = [];
+
+  lesson:Observable<any>
   constructor(
     private commentsService: CommentsService,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private notificationsService: NotificationsService,
+    private lessonsService: LessonsService
   ) { }
 
   onSubmit() {
     const { comment } = this;
     this.commentsService.addComment(this.lessonId, comment, this.user)
     .subscribe(response => {
+      this.notificationsService.newNotification(this.user, this.lessonId, this.lessonTitle)
+      .subscribe(res => {
+        console.log(res)
+      })
       window.location.reload();
     }, error => {
       console.log({ error })
@@ -42,6 +53,11 @@ export class CommentsComponent implements OnInit {
       }
       this.lessonId = paramMap.get('id');
     });
+    //get lesson title
+    this.lesson = this.lessonsService.getLessonById(this.lessonId);
+    this.lesson.subscribe(value=> {
+      this.lessonTitle = value.title
+    })
     // get only comments who have the lessonId that we have
     this.allComments.subscribe(value => {
       value.map(e => {

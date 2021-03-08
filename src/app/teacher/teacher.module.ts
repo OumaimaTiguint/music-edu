@@ -12,6 +12,7 @@ import { EditLessonComponent } from './edit-lesson/edit-lesson.component';
 import { UsersComponent } from './users/users.component';
 import { CommentsComponent } from './comments/comments.component';
 import { AddExercisesComponent } from './add-exercises/add-exercises.component';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 
 @NgModule({
@@ -22,14 +23,17 @@ import { AddExercisesComponent } from './add-exercises/add-exercises.component';
     AddLessonComponent, 
     LessonComponent, 
     EditLessonComponent, 
-    UsersComponent, CommentsComponent, AddExercisesComponent
+    UsersComponent, 
+    CommentsComponent, 
+    AddExercisesComponent
   ],
   imports: [
     CommonModule,
     TeacherRoutingModule,
     ReactiveFormsModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ClickOutsideModule
   ]
 })
 export class TeacherModule { }

@@ -23,4 +23,7 @@ export class UsersService {
   getUserById(id) {
     return this.http.get("http://localhost:5000/u/" + id)
   }
+  deleteUser(id:string) {
+    return this.http.delete("http://localhost:5000/u/delete/" + id)
+  }
 }

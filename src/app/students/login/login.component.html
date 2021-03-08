@@ -2,6 +2,7 @@
     <h1 class="text-center mb-5">Login</h1>
     <div class="row">
         <div class="col-md-6 offset-md-3">
+            <div id="error"></div>
             <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
                 <div class="form-group">
                     <label for="Fullname">Full Name</label>

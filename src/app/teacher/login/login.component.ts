@@ -25,8 +25,18 @@ export class LoginComponent implements OnInit {
     .pipe(first())
     .subscribe(
       (data: HttpResponse<any>) => {
-        localStorage.setItem('token', data.headers.get('token'));
-        this.router.navigate(["/t/dashboard/"])
+        if(data.headers.get('token') !== null) {
+          localStorage.setItem('token', data.headers.get('token'));
+          this.router.navigate(["/t/dashboard/"])
+        }
+        const error = document.getElementById('error');
+        error.innerText = "Fullname/Password is incorrect.";
+        // error message styling
+        error.style.backgroundColor = "red"
+        error.style.color = "white"
+        error.style.padding = "10px"
+        error.style.borderRadius = "10px"
+        error.style.fontWeight = "bold"
       },error => {
         console.log(error)
       }

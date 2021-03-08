@@ -18,7 +18,52 @@ li a, li p {
     font-size: 20px;
     margin-left: 30px
 }
+.notification-wrapper {
+    position: relative;
+    padding: 8px 15px;
+    float: right;
+    border-radius: 5px;
+}
 
+.notification-wrapper .notification-btn {
+    cursor: pointer;
+}
+.notification-wrapper { padding: 0}
+.notification-content {
+    position: absolute;
+    top: 40px;
+    right: 5px;
+    width: 350px;
+    height: 200px;
+    background-color: whitesmoke;
+    z-index: 300;
+    border: 1px solid $main-color;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow-y: auto;
+}
+.notification-header {
+    background-color: #F2A154;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    text-align: center;
+}
+.notifications {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.notification {
+    padding: 10px;
+    font-family: $main-font;
+    border-bottom: 1px solid lightgrey
+}
+.notification-btn {
+    img { 
+        width: 25px;
+    }
+}
 @media screen and (max-width: 800px) {
     li a {
         font-size: 16px;

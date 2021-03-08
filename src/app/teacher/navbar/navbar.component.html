@@ -3,13 +3,40 @@
         <a class="navbar-brand" href="">
             <img src="assets/icons/music-note.svg" width="40" height="40" alt="icon">
         </a>
-        <ul class="nav navbar-nav ml-auto flex-row">
+        <ul class="nav navbar-nav mx-auto flex-row">
             <li class="nav-item">
                 <a class="nav-link" href="/t/students">Students</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/t/dashboard">Dashboard</a>
             </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto flex-row">
+            <li class="nav-item">
+                <div class="notification-wrapper">
+                    <a class="notification-btn nav-link" (click)="openNotification(!showNotification)">
+                      <img src="assets/icons/bell.svg">
+                    </a>
+                    <div 
+                        *ngIf="showNotification" 
+                        class="notification-content" 
+                        (clickOutside)="openNotification(false)" 
+                        [exclude]="'.notification-btn'">
+                        <div class="notification-header">
+                            <span class="label">Notifications</span>
+                        </div>
+                        <div class="notifications">
+                            <div 
+                                class="notification" 
+                                *ngFor="let not of (notifications | async)"
+                                [routerLink]="['/t/l/', not.lessonId]">
+                                {{not.user | titlecase}} commented on {{not.lessonTitle | titlecase}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
             <li class="nav-item dropdown">
                 <a 
                     class="nav-link dropdown-toggle" 
