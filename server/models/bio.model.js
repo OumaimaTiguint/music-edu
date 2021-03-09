@@ -15,6 +15,13 @@ const bioSchema = new Schema({
         unique: false,
         trim: true,
         minLength: 2
+    },
+    ger: {
+        type: String,
+        required: true,
+        unique: false,
+        trim: true,
+        minLength: 2
     }
 },
 {

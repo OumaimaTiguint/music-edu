@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../services/notifications.service';
 import { Observable } from 'rxjs';
 import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,13 +15,21 @@ export class RegisterComponent implements OnInit {
   constructor(
     private builder: FormBuilder,
     private usersService: UsersService,
-    private router: Router
+    private router: Router,
+    private notificationsService: NotificationsService
   ) { }
 
   onSubmit(FormData) {
+    const action = " registered"
+    const lessonId = "/t/students"
+    const lessonTitle = '.'
     const { Fullname, Password } = FormData;
     this.usersService.addUser(Fullname, Password)
     .subscribe(response => {
+      this.notificationsService.newNotification(Fullname, lessonId, lessonTitle, action)
+      .subscribe(res => {
+        console.log(res)
+      })
       this.router.navigate(["/s/login/"])
     }, error => {
       console.log({ error })

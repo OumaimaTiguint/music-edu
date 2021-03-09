@@ -28,6 +28,7 @@ const commentRouter = require('./routes/comments');
 const bioRouter = require('./routes/bio');
 const notificationRouter = require('./routes/notifications');
 const exercisesRouter = require('./routes/exercises');
+const AuthorizedStudentRouter = require('./routes/authorizedStudents');
 const path = require('path');
 
 app.use('/l', lessonRouter);
@@ -36,6 +37,7 @@ app.use('/u', userRouter);
 app.use('/c', commentRouter);
 app.use('/b', bioRouter);
 app.use('/n', notificationRouter);
+app.use('/access', AuthorizedStudentRouter);
 
 app.use('/exercises', express.static(path.join('public/uploads')));
 app.use('/api/exercises', exercisesRouter);
