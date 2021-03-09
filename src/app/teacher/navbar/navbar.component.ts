@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   decoded;
   name: string;
   notifications: Observable<any>
+  num: number;
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -29,13 +30,21 @@ export class NavbarComponent implements OnInit {
     this.showNotification = state;
   }
 
+  delete(lessonId, id) {
+    this.notificationsService.deleteNotification(id).subscribe(() => console.log("notification deleted"));
+    this.router.navigate(["/t/l", lessonId])
+  }
+
   ngOnInit(): void {
     const token = localStorage.getItem('token')
     this.decoded = this.authService.getDecodedAccessToken(token)
     this.name = this.decoded.fullname.split(" ")[0];
 
     //get notifications
-    this.notifications =this.notificationsService.getNotifications();
+    this.notifications = this.notificationsService.getNotifications();
+    this.notifications.subscribe(e => {
+      this.num = e.length
+    })
   }
 
 }

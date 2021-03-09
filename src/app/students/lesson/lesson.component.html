@@ -5,10 +5,13 @@
     <div class="lesson-content">
         <p>{{content}}</p>
         <div class="btns">
-            <a class="btn ex" href={{exerciseFile}} target="_blank">
+            <a class="btn ex" (click)="pdfClicked()" href={{exerciseFile}} target="_blank">
                 Download Exercises
             </a>
         </div>
+    </div>
+    <div class="center">
+        <embed height="300" [src]="urlSafe" type="application/pdf">
     </div>
     <app-comments></app-comments>
 </div>

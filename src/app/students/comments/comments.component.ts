@@ -31,9 +31,10 @@ export class CommentsComponent implements OnInit {
 
   onSubmit() {
     const { comment } = this;
+    const action = " commented on "
     this.commentsService.addComment(this.lessonId, comment, this.user)
     .subscribe(response => {
-      this.notificationsService.newNotification(this.user, this.lessonId, this.lessonTitle)
+      this.notificationsService.newNotification(this.user, this.lessonId, this.lessonTitle, action)
       .subscribe(res => {
         console.log(res)
       })

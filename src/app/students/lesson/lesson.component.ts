@@ -1,9 +1,11 @@
+import { AuthService } from './../../services/auth.service';
+import { NotificationsService } from './../../services/notifications.service';
 import { ExerciseService } from 'src/app/services/exercise.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LessonsService } from 'src/app/services/lessons.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -12,6 +14,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./lesson.component.scss']
 })
 export class LessonComponent implements OnInit {
+  @Input()
+    urlSafe: SafeResourceUrl;
+  
+  sanitizedURL = [];
   loadedLesson: Observable<any>;
   title: string;
   content: string;
@@ -22,12 +28,24 @@ export class LessonComponent implements OnInit {
   exercises: Observable<any>
 
   exerciseFile;
+  decoded;
+  name: string;
   
   constructor(
     private lessonsService: LessonsService,
     private activatedRoute: ActivatedRoute,
-    private exerciseService: ExerciseService
-  ) {
+    private exerciseService: ExerciseService,
+    private notificationsService: NotificationsService,
+    private authService: AuthService,
+    private sanitizer: DomSanitizer
+  ) {}
+
+  pdfClicked() {
+    const action = " downloaded PDF of "
+    this.notificationsService.newNotification(this.name, this.lessonId, this.title, action)
+    .subscribe(res => {
+      console.log(res)
+    })
   }
 
   ngOnInit(): void {
@@ -51,8 +69,18 @@ export class LessonComponent implements OnInit {
       value.exercises.map(e => {
         if(e.lessonId === this.lessonId) {
           this.exerciseFile = e.filePath
+          
+          //sanitize url for file preview
+          this.sanitizedURL.push(this.sanitizer.bypassSecurityTrustResourceUrl(this.exerciseFile))
+          this.urlSafe = this.sanitizedURL[0]
+          console.log(this.urlSafe)
         }
       })
     })
+
+    //get user name
+    const token = localStorage.getItem('token')
+    this.decoded = this.authService.getDecodedAccessToken(token)
+    this.name = this.decoded.fullname
   }
 }

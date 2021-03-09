@@ -12,7 +12,11 @@ export class NotificationsService {
     return this.http.get("http://localhost:5000/n")
   }
 
-  newNotification(user, lessonId, lessonTitle) {
-    return this.http.post("http://localhost:5000/n/add", {user, lessonId, lessonTitle})
+  newNotification(user, lessonId, lessonTitle, action) {
+    return this.http.post("http://localhost:5000/n/add", {user, lessonId, lessonTitle, action})
+  }
+
+  deleteNotification(id:string) {
+    return this.http.delete("http://localhost:5000/n/delete/" + id)
   }
 }
