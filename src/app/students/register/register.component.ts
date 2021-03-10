@@ -23,8 +23,8 @@ export class RegisterComponent implements OnInit {
     const action = " registered"
     const lessonId = "/t/students"
     const lessonTitle = '.'
-    const { Fullname, Email, Password } = FormData;
-    this.usersService.addUser(Fullname, Email, Password)
+    const { Fullname, Username, Email, Password } = FormData;
+    this.usersService.addUser(Fullname, Username, Email, Password)
     .subscribe(response => {
       this.notificationsService.newNotification(Fullname, lessonId, lessonTitle, action)
       .subscribe(res => {
@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.FormData = this.builder.group({
       Fullname: new FormControl('', [Validators.required]),
+      Username: new FormControl('', [Validators.required]),
       Email: new FormControl('', [Validators.required, Validators.email]),
       Password: new FormControl('', [Validators.required])
     })

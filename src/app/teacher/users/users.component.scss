@@ -11,8 +11,9 @@
 .student {
     display: grid;
     grid-template-areas: 
+        "img username"
         "img name"
-        "img email"
+        "email email"
         "btn1 btn2";
     grid-template-columns: 1fr 1fr;
     background-color: $secondary-color;
@@ -25,12 +26,11 @@
         width: 80px
     }
     h2 {
-        grid-area: name;
+        grid-area: username;
         padding: 5px
     }
-    p{
-        grid-area: email;
-    }
+    .name { grid-area: name;}
+    .email{grid-area: email;}
     .btn {
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
         font-weight: bold;

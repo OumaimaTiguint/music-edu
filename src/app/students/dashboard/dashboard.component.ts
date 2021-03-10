@@ -50,7 +50,6 @@ export class DashboardComponent implements OnInit {
         if(e.userId === this.userId) {
           this.router.navigate(['/s/l/', id])
         }
-        window.alert("Access Denied!")
       })
     })
   }

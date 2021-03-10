@@ -1,3 +1,4 @@
+import { UsersService } from './../../services/users.service';
 import { LessonsService } from './../../services/lessons.service';
 import { NotificationsService } from './../../services/notifications.service';
 import { AuthService } from '../../services/auth.service';
@@ -19,14 +20,15 @@ export class CommentsComponent implements OnInit {
   user: string;
   comment: string;
   commentsById = [];
-
+  currentUser: Observable<any>;
   lesson:Observable<any>
   constructor(
     private commentsService: CommentsService,
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private notificationsService: NotificationsService,
-    private lessonsService: LessonsService
+    private lessonsService: LessonsService,
+    private usersService: UsersService
   ) { }
 
   onSubmit() {
@@ -71,7 +73,10 @@ export class CommentsComponent implements OnInit {
     //get the user name
     const token = localStorage.getItem('token')
     this.decoded = this.authService.getDecodedAccessToken(token)
-    this.user = this.decoded.fullname
+    this.currentUser =this.usersService.getUserById(this.decoded._id);
+    this.currentUser.subscribe(response=> {
+      this.user = response.username;
+    })
   }
 
 }

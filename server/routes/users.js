@@ -11,10 +11,12 @@ router.route('/').get((req, res) => {
 
 router.route('/add').post((req, res) => {
     const fullname = req.body.fullname;
+    const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
     const newUser = new User({
         fullname,
+        username,
         email,
 		password
     });
@@ -23,6 +25,13 @@ router.route('/add').post((req, res) => {
         .then(()=> res.json('User added!'))
         .catch((err)=> res.status(400).json('Error: ' + err))
 })
+
+router.get('/:id', (req, res) => {
+    User.findById(req.params.id)
+        .then(qst => res.json(qst))
+        .catch(err=> res.status(400).json('Error: ' + err))
+});
+
 
 router.post('/login', async(req, res) => {
     try {
