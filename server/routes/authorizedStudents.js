@@ -7,9 +7,9 @@ router.get('/', (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err))
 });
 router.route('/add').post((req, res) => {
-    const user = req.body.user;
+    const userId = req.body.userId;
     const newAuthorizedStudent = new AuthorizedStudent({
-        user
+        userId
     });
 
     newAuthorizedStudent.save()

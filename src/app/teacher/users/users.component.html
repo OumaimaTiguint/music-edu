@@ -1,11 +1,21 @@
 <app-navbar></app-navbar>
 <div class="container">
     <h1>Registered Students</h1>
+    <div id="confirmation"></div>
     <div class="students">
         <div class="student" *ngFor="let student of (students | async)">
             <img src="assets/user.svg" alt="user icon">
             <h2>{{student.fullname | titlecase}}</h2>
-            <button class="btn btn-danger" (click)="delete(student._id)">Delete</button>
+            <button 
+                class="btn btn-danger" 
+                (click)="delete(student._id)">
+                Delete
+            </button>
+            <button 
+                class="btn btn-dark" 
+                (click)="allowAccess(student._id, student.fullname)">
+                Allow Access
+            </button>
         </div>
     </div>
 </div>

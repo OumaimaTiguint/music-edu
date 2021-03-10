@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const authorizedStudentSchema = new Schema({
-    user: {
+    userId: {
         type: String,
         required: true,
-        unique: false,
+        unique: true,
         trim: true,
         minLength: 2
     }

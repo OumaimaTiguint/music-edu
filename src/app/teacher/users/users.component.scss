@@ -11,9 +11,9 @@
 .student {
     display: grid;
     grid-template-areas: 
-        "img name"
-        "img btn";
-    grid-template-columns: 1fr 3fr;
+        "img name name"
+        "img btn1 btn2";
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: $secondary-color;
     margin: 10px;
     padding: 10px;
@@ -27,12 +27,13 @@
         grid-area: name;
         padding: 5px
     }
-    button {
-        grid-area: btn;
-        width: 110px;
+    .btn {
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
         font-weight: bold;
+        margin: 5px
     }
+    .btn-danger {grid-area: btn1;}
+    .btn-dark {grid-area: btn2;}
 }
 
 @media screen and (max-width: 800px) {
