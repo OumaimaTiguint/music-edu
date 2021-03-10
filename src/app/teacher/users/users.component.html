@@ -6,6 +6,7 @@
         <div class="student" *ngFor="let student of (students | async)">
             <img src="assets/user.svg" alt="user icon">
             <h2>{{student.fullname | titlecase}}</h2>
+            <p>{{student.email}}</p>
             <button 
                 class="btn btn-danger" 
                 (click)="delete(student._id)">

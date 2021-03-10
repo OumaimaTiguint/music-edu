@@ -12,8 +12,8 @@ export class UsersService {
   getUsers() {
     return this.http.get("http://localhost:5000/u/")
   }
-  addUser(fullname, password) {
-    return this.http.post("http://localhost:5000/u/add", {fullname, password})
+  addUser(fullname, email, password) {
+    return this.http.post("http://localhost:5000/u/add", {fullname, email, password})
   }
   login(fullname, password) {
     return this.http.post("http://localhost:5000/u/login/", {fullname, password},

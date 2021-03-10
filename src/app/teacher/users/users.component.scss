@@ -11,9 +11,10 @@
 .student {
     display: grid;
     grid-template-areas: 
-        "img name name"
-        "img btn1 btn2";
-    grid-template-columns: 1fr 1fr 1fr;
+        "img name"
+        "img email"
+        "btn1 btn2";
+    grid-template-columns: 1fr 1fr;
     background-color: $secondary-color;
     margin: 10px;
     padding: 10px;
@@ -26,6 +27,9 @@
     h2 {
         grid-area: name;
         padding: 5px
+    }
+    p{
+        grid-area: email;
     }
     .btn {
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
