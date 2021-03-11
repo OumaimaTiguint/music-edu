@@ -1,26 +1,28 @@
 const router = require('express').Router();
-let AuthorizedStudent = require('../models/authorizedStudent.model');
+let Media = require('../models/media.model');
 
 router.get('/', (req, res) => {
-    AuthorizedStudent.find()
+    Media.find()
         .then(l => res.json(l))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
 router.route('/add').post((req, res) => {
-    const userId = req.body.userId;
-    const newAuthorizedStudent = new AuthorizedStudent({
-        userId
+    const link = req.body.link;
+    const path = req.body.path;
+    const newMedia = new Media({
+        link,
+        path
     });
 
-    newAuthorizedStudent.save()
-        .then(()=> res.json('User Allowed access!'))
+    newMedia.save()
+        .then(()=> res.json('Video added!'))
         .catch((err)=> res.status(400).json('Error: ' + err))
 })
 
 router.route('/delete/:id').delete((req, res) => {
-    AuthorizedStudent.findByIdAndDelete(req.params.id)
-        .then(() => res.json('User not allowed access!'))
+    Media.findByIdAndDelete(req.params.id)
+        .then(() => res.json('Video deleted!'))
         .catch(err=> res.status(400).json('Error: ' + err))
 });
 module.exports = router;

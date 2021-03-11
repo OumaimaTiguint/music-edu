@@ -13,6 +13,7 @@ import { UsersComponent } from './users/users.component';
 import { CommentsComponent } from './comments/comments.component';
 import { AddExercisesComponent } from './add-exercises/add-exercises.component';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { MediaComponent } from './media/media.component';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
     EditLessonComponent, 
     UsersComponent, 
     CommentsComponent, 
-    AddExercisesComponent
+    AddExercisesComponent, MediaComponent
   ],
   imports: [
     CommonModule,

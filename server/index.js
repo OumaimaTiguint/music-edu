@@ -29,6 +29,7 @@ const bioRouter = require('./routes/bio');
 const notificationRouter = require('./routes/notifications');
 const exercisesRouter = require('./routes/exercises');
 const AuthorizedStudentRouter = require('./routes/authorizedStudents');
+const mediaRouter = require('./routes/media');
 const path = require('path');
 
 app.use('/l', lessonRouter);
@@ -38,6 +39,7 @@ app.use('/c', commentRouter);
 app.use('/b', bioRouter);
 app.use('/n', notificationRouter);
 app.use('/access', AuthorizedStudentRouter);
+app.use('/m', mediaRouter);
 
 app.use('/exercises', express.static(path.join('public/uploads')));
 app.use('/api/exercises', exercisesRouter);

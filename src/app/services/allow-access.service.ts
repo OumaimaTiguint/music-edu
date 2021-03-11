@@ -15,4 +15,8 @@ export class AllowAccessService {
   AllowAccess(userId: string) {
     return this.http.post("http://localhost:5000/access/add", {userId})
   }
+
+  DenyAccess(id: string) {
+    return this.http.delete("http://localhost:5000/access/delete/" + id )
+  }
 }

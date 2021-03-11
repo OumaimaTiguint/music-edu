@@ -14,6 +14,11 @@
                 Delete
             </button>
             <button 
+                class="btn btn-primary" 
+                (click)="denyAccess(student._id, student.fullname)">
+                Deny Access
+            </button>
+            <button 
                 class="btn btn-dark" 
                 (click)="allowAccess(student._id, student.fullname)">
                 Allow Access

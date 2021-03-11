@@ -14,8 +14,14 @@ input, textarea {
     font-weight: bold;
     font-size: 24px;
     font-family: $main-font;
-    margin: 30px;
+    margin: 10px;
     width: 40%
+}
+h2{
+    font-size: 18px;
+    color: $main-color;
+    font-family: $main-font;
+    font-weight: bold;
 }
 p{
     position: fixed; 

@@ -1,14 +1,8 @@
 @import '../../../../styles.scss';
 
 nav { 
-    background-color: $main-color;
+    background-color: #1a1c20;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.navbar-brand {
-    background-color: $secondary-color;
-    border-radius: 50%;
-    height: 40px
 }
 
 li a {
@@ -16,7 +10,8 @@ li a {
     color: $secondary-color;
     font-weight: bold;
     font-size: 20px;
-    margin-left: 30px
+    margin-left: 30px;
+    font-family: 'Bahnschrift', sans-serif;
 }
 
 @media screen and (max-width: 800px) {

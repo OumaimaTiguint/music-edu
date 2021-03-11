@@ -12,11 +12,20 @@
         margin: 5px;
         border-radius: 10px;
         display: grid;
+        grid-template-areas: 
+            "username comment"
+            "username date-time";
         grid-template-columns: 1fr 4fr;
         p {font-family: $main-font;}
         strong { 
             color: $main-color;
             font-size: 17px;
+        }
+        .user { grid-area: username;}
+        .cmnt { grid-area: comment}
+        .date-time { 
+            grid-area: date-time;
+            text-align: end;
         }
     }
     input {

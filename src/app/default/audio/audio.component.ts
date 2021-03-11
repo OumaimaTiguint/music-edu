@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { MediaService } from './../../services/media.service';
 import { Component, OnInit, Input } from '@angular/core';
 import {DomSanitizer,SafeResourceUrl,} from '@angular/platform-browser';
 
@@ -12,21 +14,28 @@ export class AudioComponent implements OnInit {
     urlSafe: SafeResourceUrl[];
 
   sanitizedURLs = [];
-
-  videos = [
-    "https://www.youtube.com/embed/Dr25aA-T_8A",
-    "https://www.youtube.com/embed/OPw2WkFoP6o",
-    "https://www.youtube.com/embed/S7QF0vtB_Ug"
-  ]
-  constructor(private sanitizer: DomSanitizer) {}
+  allVideos: Observable<any>
+  videos = []
+  constructor(
+    private sanitizer: DomSanitizer,
+    private mediaService: MediaService
+  ) {}
 
   ngOnInit() {
-    //looping through the videos array
-    for(let url of this.videos) {
-      //sanitizing each url and adding it to the sanitizedURLs array
-      this.sanitizedURLs.push(this.sanitizer.bypassSecurityTrustResourceUrl(url)) 
-    } 
-    //adding sanitizedURLs content into a safeResourceUrl array
-    this.urlSafe = this.sanitizedURLs
+    this.allVideos = this.mediaService.getAllVideos();
+    this.allVideos.subscribe(response => {
+      response.map(e => {
+        if(e.path === "default") {
+          this.videos.push(e.link)
+        } 
+      })
+      //looping through the videos array
+      for(let url of this.videos) {
+        //sanitizing each url and adding it to the sanitizedURLs array
+        this.sanitizedURLs.push(this.sanitizer.bypassSecurityTrustResourceUrl(url)) 
+      } 
+      //adding sanitizedURLs content into a safeResourceUrl array
+      this.urlSafe = this.sanitizedURLs
+    })
   }
 }

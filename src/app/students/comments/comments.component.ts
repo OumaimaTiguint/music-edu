@@ -69,7 +69,6 @@ export class CommentsComponent implements OnInit {
         }
       })
     })
-
     //get the user name
     const token = localStorage.getItem('token')
     this.decoded = this.authService.getDecodedAccessToken(token)

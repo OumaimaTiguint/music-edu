@@ -14,7 +14,8 @@
         "img username"
         "img name"
         "email email"
-        "btn1 btn2";
+        "btn3 btn2"
+        "btn1 btn1";
     grid-template-columns: 1fr 1fr;
     background-color: $secondary-color;
     margin: 10px;
@@ -38,6 +39,7 @@
     }
     .btn-danger {grid-area: btn1;}
     .btn-dark {grid-area: btn2;}
+    .btn-primary {grid-area: btn3;}
 }
 
 @media screen and (max-width: 800px) {

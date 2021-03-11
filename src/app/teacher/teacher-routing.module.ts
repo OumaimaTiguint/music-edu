@@ -7,6 +7,7 @@ import { LessonComponent } from './lesson/lesson.component';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
 import { EditLessonComponent } from './edit-lesson/edit-lesson.component';
 import { AuthGuardService as AuthGuard } from '../services/auth-guard.service';
+import { MediaComponent } from './media/media.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent},
@@ -33,6 +34,11 @@ const routes: Routes = [
   { 
     path: "students", 
     component: UsersComponent,
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: "media", 
+    component: MediaComponent,
     canActivate: [AuthGuard] 
   }
 ];

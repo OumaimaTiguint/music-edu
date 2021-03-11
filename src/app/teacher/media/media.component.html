@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="default">
+        <h1>Default Media</h1>
+        <div class="add-video">
+            <input 
+                type="text" 
+                name="default" 
+                [(ngModel)]="defaultLink"
+            >
+            <button  type="submit" (click)="onSubmitDefault()">Add Video</button>
+        </div>
+        <hr>
+        <div class="videos">
+            <iframe width="300" height="190" *ngFor="let url of defaultUrlSafe" [src]="url"></iframe>
+        </div>
+    </div>
+    <div class="student">
+        <h1>Student Media</h1>
+        <div class="add-video">
+            <input 
+                type="text" 
+                name="default" 
+                [(ngModel)]="studentLink"
+            >
+            <button  type="submit" (click)="onSubmitStudent()">Add Video</button>
+        </div>
+        <hr>
+        <div class="videos">
+            <iframe width="300" height="190" *ngFor="let url of studentUrlSafe" [src]="url"></iframe>
+        </div>
+    </div>
+</div>

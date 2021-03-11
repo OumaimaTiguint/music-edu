@@ -1,8 +1,19 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">
-            <img src="assets/icons/music-note.svg" width="40" height="40" alt="icon">
-        </a>
+        <ul class="nav nav-bar mr-auto flex-row">
+            <li class="nav-item">
+                <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Media</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/bio">Bio</a>
+            </li>
+        </ul>
         <ul class="nav navbar-nav ml-auto flex-row">
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/s/dashboard']">Dashboard</a>

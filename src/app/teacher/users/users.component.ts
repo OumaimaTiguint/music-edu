@@ -36,8 +36,28 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  denyAccess(userId, fullname) {
+    this.allowed.subscribe(response => {
+      response.map(e=> {
+        if(e.userId === userId) {
+          this.allowAccessService.DenyAccess(e._id).subscribe(res => {
+            const confirmation = document.getElementById("confirmation")
+            confirmation.innerText = fullname + ' denied access.'
+            // confirmation message styling
+            confirmation.style.backgroundColor = "red"
+            confirmation.style.color = "white"
+            confirmation.style.padding = "10px"
+            confirmation.style.borderRadius = "10px"
+            confirmation.style.fontWeight = "bold"
+          })
+        }
+      })
+    })
+  }
+
   ngOnInit(): void {
     this.students = this.userService.getUsers();
+    this.allowed = this.allowAccessService.getAllStudentsAllowedAccess();
   }
 
 }
