@@ -5,12 +5,6 @@ nav {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.navbar-brand {
-    background-color: $secondary-color;
-    border-radius: 50%;
-    height: 40px
-}
-
 li a, li p {
     text-decoration: none;
     color: $secondary-color;
@@ -67,7 +61,14 @@ li a, li p {
 }
 @media screen and (max-width: 800px) {
     li a {
-        font-size: 16px;
-        margin-left: 10px;
+        font-size: 14px;
+        margin-left: 0px;
+        padding: 4px
+    }
+
+    .notification-btn {
+        img { 
+            width: 16px;
+        }
     }
 }

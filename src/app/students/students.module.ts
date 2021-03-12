@@ -8,6 +8,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { CommentsComponent } from './comments/comments.component';
+import { MediaComponent } from './media/media.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import { TimelinePostComponent } from './timeline-post/timeline-post.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { CommentsComponent } from './comments/comments.component';
     DashboardComponent, 
     NavbarComponent, 
     LessonComponent,
-    CommentsComponent
+    CommentsComponent,
+    MediaComponent,
+    TimelineComponent,
+    TimelinePostComponent
   ],
   imports: [
     CommonModule,

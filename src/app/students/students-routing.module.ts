@@ -6,6 +6,9 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { AuthGuardService as AuthGuard } from '../services/auth-guard.service';
+import { MediaComponent } from './media/media.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import { TimelinePostComponent } from './timeline-post/timeline-post.component';
 
 
 const routes: Routes = [
@@ -21,6 +24,21 @@ const routes: Routes = [
     component: LessonComponent,
     canActivate: [AuthGuard] 
   },
+  { 
+    path: "media", 
+    component: MediaComponent,
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: "timeline", 
+    component: TimelineComponent,
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: "timeline/:id", 
+    component: TimelinePostComponent,
+    canActivate: [AuthGuard] 
+  }
 ];
 
 @NgModule({

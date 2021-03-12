@@ -1,0 +1,65 @@
+@import '../../../styles.scss';
+.container {
+    width: 70%;
+    margin: 0 auto
+}
+.add-video {
+    margin-top: 50px;
+    width: 100%;
+    input {
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
+        width: 80%;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    button {
+        padding: 10px;
+        margin: 5px;
+        border-radius: 10px;
+        border: none;
+        background-color: #F2A154;
+        color: #fff;
+        font-weight: bold;
+        font-family: $main-font;
+        font-size: 18px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.posts {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: $main-color;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.post { 
+    color: #fff;
+    border-bottom: 1px solid lightgrey;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 8fr 1fr;
+    grid-template-areas: 
+        "video comments"
+        "date time";
+    iframe {
+        grid-area: video;
+    }
+    .comments {
+        grid-area: comments;
+        align-items: center;
+        img { margin: 3px}
+    }
+    .date { 
+        grid-area: date;
+        text-align: right;
+        margin-right: 50px
+    }
+    .time { 
+        grid-area: time;
+        text-align: center;
+    }
+}

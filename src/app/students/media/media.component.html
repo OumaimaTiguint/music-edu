@@ -1,0 +1,7 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Media</h1>
+    <div class="videos">
+        <iframe width="300" height="190" *ngFor="let url of urlSafe" [src]="url"></iframe>
+    </div>
+</div>

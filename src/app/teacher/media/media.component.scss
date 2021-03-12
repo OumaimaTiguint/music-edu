@@ -29,7 +29,11 @@ h1 { color: #fff}
 .videos {
     margin: 0 auto;
     width: 80%;
-    border: none
+    border: none;
+    display: flex;
+    flex-direction: column-reverse;
+    max-height: 600px;
+    overflow-y: auto;
 }
 .student, .default {
     background-color: $main-color;
@@ -45,4 +49,17 @@ hr {
 .add-video {
     width: 90%;
     margin: 0 auto
+}
+iframe { 
+    border: none;
+    margin: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+@media screen and (max-width: 800px) {
+    .container {
+        display: block
+    }
+    iframe {
+        margin-bottom: 2px
+    }
 }
