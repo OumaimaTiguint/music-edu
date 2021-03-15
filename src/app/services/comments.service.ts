@@ -14,4 +14,7 @@ export class CommentsService {
   addComment(lessonId, comment, user) {
     return this.http.post("http://localhost:5000/c/add/", {lessonId, comment, user})
   }
+  deleteComment(id:string) {
+    return this.http.delete("http://localhost:5000/c/delete/" + id);
+  }
 }

@@ -1,10 +1,9 @@
 import { NotificationsService } from './../../services/notifications.service';
 import { TimelineService } from './../../services/timeline.service';
 import { AuthService } from './../../services/auth.service';
-import { Component, Input, OnInit, SecurityContext } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-timeline',
@@ -27,7 +26,7 @@ export class TimelineComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private authService: AuthService,
     private timelineService: TimelineService,
-    private notificationsService: NotificationsService,
+    private notificationsService: NotificationsService
   ) { }
 
   onSubmit() {

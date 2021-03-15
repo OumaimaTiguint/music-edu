@@ -1,29 +1,29 @@
 const router = require('express').Router();
-let Comment = require('../models/comment.model');
+let PostComment = require('../models/post-comment.model');
 
 router.get('/', (req, res) => {
-    Comment.find()
+    PostComment.find()
         .then(l => res.json(l))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
 router.route('/add').post((req, res) => {
-    const lessonId = req.body.lessonId;
+    const postId = req.body.postId;
     const comment = req.body.comment;
     const user = req.body.user;
-    const newComment = new Comment({
-        lessonId,
+    const newPostComment = new PostComment({
+        postId,
         comment,
         user
     });
 
-    newComment.save()
+    newPostComment.save()
         .then(()=> res.json('Comment added!'))
         .catch((err)=> res.status(400).json('Error: ' + err))
 })
 
 router.route('/delete/:id').delete((req, res) => {
-    Comment.findByIdAndDelete(req.params.id)
+    PostComment.findByIdAndDelete(req.params.id)
         .then(() => res.json('Comment deleted!'))
         .catch(err=> res.status(400).json('Error: ' + err))
 });

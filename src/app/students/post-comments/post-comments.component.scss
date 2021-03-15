@@ -13,18 +13,19 @@
         border-radius: 10px;
         display: grid;
         grid-template-areas: 
-        "username comment btn"
-        "username comment date-time";
-        grid-template-columns: 1fr 4fr 1fr;
+            "username comment"
+            "username date-time";
+        grid-template-columns: 1fr 4fr;
         p {font-family: $main-font;}
         strong { 
             color: $main-color;
             font-size: 17px;
         }
-        .btn { 
-            grid-area: btn;
-            width: 70%;
-            align-items: flex-end;
+        .user { grid-area: username;}
+        .cmnt { grid-area: comment}
+        .date-time { 
+            grid-area: date-time;
+            text-align: end;
         }
     }
     input {
@@ -50,6 +51,14 @@
 
 @media screen and (max-width: 800px) {
     .comment { 
-        grid-template-columns: 1fr 2fr !important;
+        grid-template-columns: 1fr 7fr;
+        grid-template-areas: 
+            "username comment"
+            "date-time btn"!important;
+        .btn {
+            width: 50%;
+            justify-self: flex-end;
+        }
+        .user { padding-right: 5px}
     }
 }

@@ -35,6 +35,15 @@ h1 { color: #fff}
     max-height: 600px;
     overflow-y: auto;
 }
+.video {
+    border-bottom: 1px solid $secondary-color;
+    display: flex;
+    flex-direction: row;
+    .btn {
+        font-weight: bold;
+        border-radius: 10px;
+    }
+}
 .student, .default {
     background-color: $main-color;
     margin: 10px;

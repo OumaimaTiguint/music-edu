@@ -11,6 +11,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { MediaComponent } from './media/media.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { TimelinePostComponent } from './timeline-post/timeline-post.component';
+import { PostCommentsComponent } from './post-comments/post-comments.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TimelinePostComponent } from './timeline-post/timeline-post.component';
     CommentsComponent,
     MediaComponent,
     TimelineComponent,
-    TimelinePostComponent
+    TimelinePostComponent,
+    PostCommentsComponent
   ],
   imports: [
     CommonModule,

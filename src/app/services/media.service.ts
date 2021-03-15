@@ -13,4 +13,7 @@ export class MediaService {
   addVideo(link, path) {
     return this.http.post("http://localhost:5000/m/add", {link, path})
   }
+  deleteVideo(id:string) {
+    return this.http.delete("http://localhost:5000/m/delete/" + id)
+  }
 }

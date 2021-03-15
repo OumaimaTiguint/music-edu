@@ -10,8 +10,8 @@
     </div>
     <hr>
     <div class="comment" *ngFor="let comment of commentsById">
-        <p><strong>{{comment.user | titlecase}}</strong></p>
-        <p>{{comment.comment}}</p>
-        <button (click)="delete(comment._id)" class="btn btn-danger">Delete</button>
+        <p class="user"><strong>{{comment.user}}</strong></p>
+        <p class="cmnt">{{comment.comment}}</p>
+        <p class="date-time">{{comment.createdAt.substring(0, comment.createdAt.indexOf("T"))}} {{comment.createdAt.substring(comment.createdAt.indexOf("T")+1, 16)}}</p>
     </div>
 </div>

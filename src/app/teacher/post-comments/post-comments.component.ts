@@ -1,37 +1,38 @@
-import { AuthService } from '../../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
-import { CommentsService } from '../../services/comments.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
+import { PostCommentService } from 'src/app/services/post-comment.service';
 
 @Component({
-  selector: 'app-comments',
-  templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.scss']
+  selector: 'app-post-comments',
+  templateUrl: './post-comments.component.html',
+  styleUrls: ['./post-comments.component.scss']
 })
-export class CommentsComponent implements OnInit {
+export class PostCommentsComponent implements OnInit {
   allComments: Observable<any>
   decoded;
-  lessonId: string;
+  postId: string;
   user: string;
   comment: string;
   commentsById = [];
+  title: string = " a video."
   constructor(
-    private commentsService: CommentsService,
+    private postCommentService: PostCommentService,
     private activatedRoute: ActivatedRoute,
     private authService: AuthService
   ) { }
 
   //delete comment 
   delete(id) {
-    this.commentsService.deleteComment(id).subscribe(res => {
+    this.postCommentService.deleteComment(id).subscribe(res => {
       window.location.reload();
     })
   }
 
   onSubmit() {
     const { comment } = this;
-    this.commentsService.addComment(this.lessonId, comment, this.user)
+    this.postCommentService.addComment(this.postId, comment, this.user)
     .subscribe(response => {
       window.location.reload();
     }, error => {
@@ -41,27 +42,27 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit(): void {
     //get list of all comments
-    this.allComments = this.commentsService.getAllComments();
-    //get the lessonId
+    this.allComments = this.postCommentService.getAllComments();
+    //get the postId
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if(!paramMap.has('id')) {
         return;
       }
-      this.lessonId = paramMap.get('id');
+      this.postId = paramMap.get('id');
     });
     // get only comments who have the lessonId that we have
     this.allComments.subscribe(value => {
+      console.log(value)
       value.map(e => {
-        if(e.lessonId === this.lessonId) {
+        if(e.postId === this.postId) {
           this.commentsById.push(e)
         }
       })
     })
-
     //get the user name
     const token = localStorage.getItem('token')
     this.decoded = this.authService.getDecodedAccessToken(token)
-    this.user = this.decoded.fullname
+    this.user =this.decoded.fullname;
   }
 
 }

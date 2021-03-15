@@ -1,19 +1,11 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="add-video">
-        <input 
-            type="text" 
-            name="default" 
-            [(ngModel)]="link"
-        >
-        <button  type="submit" (click)="onSubmit()">Post Video</button>
-    </div>
-    <hr>
+    <h1>{{user}}</h1>
     <div class="posts">
         <div 
             class="post" 
             *ngFor="let video of videos" 
-            [routerLink]="['/s/timeline/', video._id]">
+            [routerLink]="['/t/post/', video._id]">
             <iframe width="300" height="190" [src]="video.link"></iframe>
             <p class="date">{{video.createdAt.substring(0, video.createdAt.indexOf("T"))}}</p> 
             <p class="time">{{video.createdAt.substring(video.createdAt.indexOf("T")+1, 16)}}</p>

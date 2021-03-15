@@ -61,9 +61,20 @@ li a, li p {
 }
 @media screen and (max-width: 800px) {
     li a {
-        font-size: 14px;
+        font-size: 13px;
         margin-left: 0px;
-        padding: 4px
+        padding: 2px;
+        letter-spacing: -0.6px;
+    }
+    .ml-auto {
+        li a {
+            padding-left: 7px
+        }
+    }
+    .mx-auto {
+        li a {
+            padding-left: 7px
+        }
     }
 
     .notification-btn {

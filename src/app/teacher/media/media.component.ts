@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 import { MediaService } from './../../services/media.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -12,13 +11,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class MediaComponent implements OnInit {
   @Input()
     url: string[];
-    defaultUrlSafe: SafeResourceUrl[];
-    studentUrlSafe: SafeResourceUrl[];
-
-  defaultSanitizedURLs = [];
-  studentSanitizedURLs = [];
   defaultLink: string;
-  studentLink: string;
+  studentLink: string
   allVideos: Observable<any>
   defaultVideos = []
   studentVideos = []
@@ -26,6 +20,13 @@ export class MediaComponent implements OnInit {
     private mediaService: MediaService,
     private sanitizer: DomSanitizer
   ) { }
+
+  delete(id) {
+    this.mediaService.deleteVideo(id)
+    .subscribe(e=> {
+      window.location.reload();
+    })
+  }
 
   onSubmitDefault() {
     const path = "default"
@@ -54,23 +55,21 @@ export class MediaComponent implements OnInit {
     this.allVideos.subscribe(response => {
       response.map(e => {
         if(e.path === "default") {
-          this.defaultVideos.push(e.link)
+          this.defaultVideos.push(e)
         } else if(e.path === "student") {
-          this.studentVideos.push(e.link)
+          this.studentVideos.push(e)
         }
       })
       //looping through the videos array
       for(let url of this.defaultVideos) {
-        //sanitizing each url and adding it to the sanitizedURLs array
-        this.defaultSanitizedURLs.push(this.sanitizer.bypassSecurityTrustResourceUrl(url)) 
-      } 
-      //adding sanitizedURLs content into a safeResourceUrl array
-      this.defaultUrlSafe = this.defaultSanitizedURLs
+        const urlSafe: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url.link)
+        url.link = urlSafe
+      }
 
       for(let url of this.studentVideos) {
-        this.studentSanitizedURLs.push(this.sanitizer.bypassSecurityTrustResourceUrl(url)) 
+        const urlSafe: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url.link)
+        url.link = urlSafe
       } 
-      this.studentUrlSafe = this.studentSanitizedURLs
     })
   }
 

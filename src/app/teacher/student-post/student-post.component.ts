@@ -1,23 +1,27 @@
-import { Observable } from 'rxjs';
-import { TimelineService } from './../../services/timeline.service';
-import { ActivatedRoute } from '@angular/router';
+import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { TimelineService } from 'src/app/services/timeline.service';
 
 @Component({
-  selector: 'app-timeline-post',
-  templateUrl: './timeline-post.component.html',
-  styleUrls: ['./timeline-post.component.scss']
+  selector: 'app-student-post',
+  templateUrl: './student-post.component.html',
+  styleUrls: ['./student-post.component.scss']
 })
-export class TimelinePostComponent implements OnInit {
+export class StudentPostComponent implements OnInit {
   postId: string;
   loadedPost: Observable<any>
   link;
   createdAt: string;
+  user: Observable<any>
+  name: string;
   constructor(
     private activatedRoute: ActivatedRoute,
     private timelineService: TimelineService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private usersService: UsersService
   ) { }
 
   ngOnInit(): void {
@@ -28,10 +32,14 @@ export class TimelinePostComponent implements OnInit {
       this.postId = paramMap.get('id');
       this.loadedPost = this.timelineService.getTimelinePostById(this.postId)
       this.loadedPost.subscribe(response => {
-        const { link, createdAt } = response;
+        const { link, createdAt, userId } = response;
         const urlSafe: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(link)
         this.link = urlSafe;
-        this.createdAt = createdAt
+        this.createdAt = createdAt;
+        this.user = this.usersService.getUserById(userId);
+        this.user.subscribe(e => {
+          this.name = e.fullname
+        })
       })
     });
   }

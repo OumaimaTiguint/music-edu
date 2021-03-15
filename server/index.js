@@ -31,6 +31,7 @@ const exercisesRouter = require('./routes/exercises');
 const AuthorizedStudentRouter = require('./routes/authorizedStudents');
 const mediaRouter = require('./routes/media');
 const timelineRouter = require('./routes/timeline');
+const postCommentRouter = require('./routes/post-comments');
 const path = require('path');
 
 app.use('/l', lessonRouter);
@@ -42,6 +43,7 @@ app.use('/n', notificationRouter);
 app.use('/access', AuthorizedStudentRouter);
 app.use('/m', mediaRouter);
 app.use('/tl', timelineRouter);
+app.use('/pc', postCommentRouter);
 
 app.use('/exercises', express.static(path.join('public/uploads')));
 app.use('/api/exercises', exercisesRouter);

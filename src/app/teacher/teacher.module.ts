@@ -14,6 +14,9 @@ import { CommentsComponent } from './comments/comments.component';
 import { AddExercisesComponent } from './add-exercises/add-exercises.component';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { MediaComponent } from './media/media.component';
+import { StudentWallComponent } from './student-wall/student-wall.component';
+import { StudentPostComponent } from './student-post/student-post.component';
+import { PostCommentsComponent } from './post-comments/post-comments.component';
 
 
 @NgModule({
@@ -26,7 +29,7 @@ import { MediaComponent } from './media/media.component';
     EditLessonComponent, 
     UsersComponent, 
     CommentsComponent, 
-    AddExercisesComponent, MediaComponent
+    AddExercisesComponent, MediaComponent, StudentWallComponent, StudentPostComponent, PostCommentsComponent
   ],
   imports: [
     CommonModule,

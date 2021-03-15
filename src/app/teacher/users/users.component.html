@@ -3,7 +3,10 @@
     <h1>Registered Students</h1>
     <div id="confirmation"></div>
     <div class="students">
-        <div class="student" *ngFor="let student of (students | async)">
+        <div 
+            class="student" 
+            *ngFor="let student of (students | async)" 
+            [routerLink]="['/t/students/', student._id]">
             <img src="assets/user.svg" alt="user icon">
             <h2>{{student.username | titlecase}}</h2>
             <p class="name">{{student.fullname | titlecase}}</p>

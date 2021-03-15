@@ -5,3 +5,18 @@ iframe {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
     border: none
 }
+.videos {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 70%;
+    margin: 0 auto
+}
+@media screen and (max-width: 800px) {
+    .videos {
+        width: 90%
+    }
+    iframe {
+        width: 100%;
+        height: 200px
+    }
+}

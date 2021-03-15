@@ -25,7 +25,7 @@ const routes: Routes = [
     canActivate: [AuthGuard] 
   },
   { 
-    path: "media", 
+    path: "edu-videos", 
     component: MediaComponent,
     canActivate: [AuthGuard] 
   },
